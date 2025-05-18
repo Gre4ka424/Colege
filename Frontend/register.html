@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Mediterranean College Alumni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e5091;
+            --secondary-color: #00a0c6;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .register-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-header h2 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .form-header p {
+            color: #6c757d;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 160, 198, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .form-separator {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: #6c757d;
+        }
+        
+        .form-separator::before, .form-separator::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .form-separator::before {
+            margin-right: 10px;
+        }
+        
+        .form-separator::after {
+            margin-left: 10px;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+        }
+        
+        .form-footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .alert {
+            display: none;
+            margin-bottom: 20px;
+        }
+        
+        .college-logo {
+            max-width: 200px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="register-container">
+            <div class="form-header">
+                <img src="assets/Saint Row.png" alt="Mediterranean College Logo" class="college-logo">
+                <h2>Alumni Registration</h2>
+                <p>Join the Mediterranean College Alumni Network</p>
+            </div>
+            
+            <div class="alert alert-success" id="successAlert" role="alert">
+                Registration successful! You can now <a href="login.html">login</a> to your account.
+            </div>
+            
+            <div class="alert alert-danger" id="errorAlert" role="alert"></div>
+            
+            <form id="registrationForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">Full Name*</label>
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address*</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password*</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">Confirm Password*</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-separator">Personal Information</div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="studentId" class="form-label">Student ID*</label>
+                            <input type="text" class="form-control" id="studentId" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="graduationYear" class="form-label">Graduation Year*</label>
+                            <select class="form-control" id="graduationYear" required>
+                                <option value="">Select Year</option>
+                                <!-- Add options dynamically -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="faculty" class="form-label">Faculty*</label>
+                            <select class="form-control" id="faculty" required>
+                                <option value="">Select Faculty</option>
+                                <!-- Faculties will be loaded via API -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio" class="form-label">Short Bio</label>
+                    <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself, your career, achievements..."></textarea>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                    <label class="form-check-label" for="termsCheck">
+                        I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+            
+            <div class="form-footer">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Terms and Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms and Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>By registering and using the Mediterranean College Alumni Portal, you agree to:</p>
+                    <ul>
+                        <li>Provide accurate and truthful information about yourself</li>
+                        <li>Respect the privacy and rights of other alumni</li>
+                        <li>Use the platform in accordance with its intended purpose</li>
+                        <li>Not engage in any behavior that could harm the college's reputation</li>
+                        <li>Allow the college to use your data for alumni-related communications</li>
+                    </ul>
+                    <p>We respect your privacy and will handle your data in accordance with our privacy policy.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate graduation years (current year down to 30 years ago)
+            const currentYear = new Date().getFullYear();
+            const graduationYearSelect = document.getElementById('graduationYear');
+            
+            for (let year = currentYear; year >= currentYear - 30; year--) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                graduationYearSelect.appendChild(option);
+            }
+            
+            // Load faculties from API
+            loadFaculties();
+            
+            // Handle form submission
+            document.getElementById('registrationForm').addEventListener('submit', registerUser);
+        });
+        
+        function loadFaculties() {
+            fetch('../Backend/api.php/faculties')
+                .then(response => response.json())
+                .then(data => {
+                    const facultySelect = document.getElementById('faculty');
+                    
+                    // Проверяем формат ответа API
+                    const faculties = data.data || data; // Поддерживаем оба формата
+                    
+                    faculties.forEach(faculty => {
+                        const option = document.createElement('option');
+                        option.value = faculty.faculty_id;
+                        option.textContent = faculty.faculty_name;
+                        facultySelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading faculties:', error);
+                    document.getElementById('errorAlert').textContent = 'Could not load faculties. Please try again later.';
+                    document.getElementById('errorAlert').style.display = 'block';
+                });
+        }
+        
+        function registerUser(e) {
+            e.preventDefault();
+            
+            // Password validation
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                document.getElementById('errorAlert').textContent = 'Passwords do not match';
+                document.getElementById('errorAlert').style.display = 'block';
+                return;
+            }
+            
+            const userData = {
+                full_name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                password: password,
+                phone: document.getElementById('phone').value,
+                student_id: document.getElementById('studentId').value,
+                graduation_year: document.getElementById('graduationYear').value,
+                faculty_id: document.getElementById('faculty').value,
+                bio: document.getElementById('bio').value,
+                role_id: 3, // Default role for pending alumni
+                status: 'pending' // Default status for new registrations
+            };
+            
+            fetch('../Backend/api.php/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Show success message
+                    document.getElementById('successAlert').style.display = 'block';
+                    document.getElementById('errorAlert').style.display = 'none';
+                    
+                    // Reset form
+                    document.getElementById('registrationForm').reset();
+                    
+                    // Redirect after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 3000);
+                } else {
+                    // Show error message
+                    document.getElementById('errorAlert').textContent = data.message || data.error || 'Registration failed. Please try again.';
+                    document.getElementById('errorAlert').style.display = 'block';
+                    document.getElementById('successAlert').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error registering user:', error);
+                document.getElementById('errorAlert').textContent = 'An error occurred. Please try again later.';
+                document.getElementById('errorAlert').style.display = 'block';
+                document.getElementById('successAlert').style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
